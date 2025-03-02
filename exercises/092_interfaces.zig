@@ -50,6 +50,7 @@
 // single uniform 'print()' function. All of the insects can
 // then be responsible for printing themselves. And Doctor
 // Zoraptera can calm down and stop gnawing on the furniture.
+
 //
 const std = @import("std");
 
@@ -83,7 +84,6 @@ const Insect = union(enum) {
     ant: Ant,
     bee: Bee,
     grasshopper: Grasshopper,
-
     // Thanks to 'inline else', we can think of this print() as
     // being an interface method. Any member of this union with
     // a print() method can be treated uniformly by outside
@@ -101,12 +101,11 @@ pub fn main() !void {
         Insect{ .bee = Bee{ .flowers_visited = 17 } },
         Insect{ .grasshopper = Grasshopper{ .distance_hopped = 32 } },
     };
-
     std.debug.print("Daily Insect Report:\n", .{});
     for (my_insects) |insect| {
         // Almost done! We want to print() each insect with a
         // single method call here.
-        ???
+        insect.print();
     }
 }
 

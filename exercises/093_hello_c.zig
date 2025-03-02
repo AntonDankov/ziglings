@@ -45,6 +45,10 @@ const c = @cImport({
     @cInclude("unistd.h");
 });
 
+const b = @cImport({
+    @cInclude("math.h");
+});
+
 pub fn main() void {
 
     // In order to output text that can be evaluated by the
@@ -52,10 +56,12 @@ pub fn main() void {
     // In Zig, we do this with "std.debug.print" and in C we can
     // specify a file descriptor i.e. 2 for error console.
     //
+    // b.abs(-13);
+
     // In this exercise we use 'write' to output 17 chars,
     // but something is still missing...
-    const c_res = write(2, "Hello C from Zig!", 17);
-
+    const c_res = c.write(2, "Hello C from Zig!", 17);
+    // b.pow(1, 2);
     // let's see what the result from C is:
     std.debug.print(" - C result is {d} chars written.\n", .{c_res});
 }
